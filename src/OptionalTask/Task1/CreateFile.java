@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class createFile {
+public class CreateFile {
     public static void main(String[] args) {
         File directory = new File("data");
         directory.mkdir();

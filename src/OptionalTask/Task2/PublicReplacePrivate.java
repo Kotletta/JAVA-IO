@@ -2,10 +2,10 @@ package OptionalTask.Task2;
 
 import java.io.*;
 
-public class publicReplacePrivate {
+public class PublicReplacePrivate {
     public static void main(String[] args) {
         {
-            try (FileWriter writer = new FileWriter("data/SomeJavaCodeReplace.txt");
+            try (FileWriter writer = new FileWriter("data/Task2.txt");
                  BufferedWriter bufferedWriter = new BufferedWriter(writer);
                  FileReader reader = new FileReader("data/SomeJavaCode.txt");
                  BufferedReader bufferedReader = new BufferedReader(reader)) {
