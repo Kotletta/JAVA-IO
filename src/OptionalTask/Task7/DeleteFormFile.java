@@ -12,6 +12,7 @@ public class DeleteFormFile {
     public static void main(String[] args) {
         String path = "data/Task7.txt";
         readFile(path).forEach(System.out::println);
+        deleteWords(path);
     }
 
 
@@ -34,6 +35,7 @@ public class DeleteFormFile {
                 count++;
             }
         }
+        ;
         return count;
     }
 
@@ -43,21 +45,22 @@ public class DeleteFormFile {
         String[] words = line.split(" ");
         return words;
     }
-    public static String deleteWordsInLine (String line){
+
+    public static String deleteWordsInLine(String line) {
         StringBuffer buffer = new StringBuffer("");
         int countWrongWords = numberOfIncorrectWordsInALine(line);
         String[] words = lineToWords(line);
 
-        while (countWrongWords > 0){
-            if(countWrongWords % 2 != 0 ){
-                countWrongWords --;
+        while (countWrongWords > 0) {
+            if (countWrongWords % 2 != 0) {
+                countWrongWords--;
             }
-            for (String word: words) {
-                if (word.length()<3 | word.length()>5){
+            for (String word : words) {
+                if (word.length() < 3 | word.length() > 5) {
                     buffer.append(word).append(" ");
 
                 } else {
-                    countWrongWords --;
+                    countWrongWords--;
                 }
 
             }
@@ -65,18 +68,19 @@ public class DeleteFormFile {
         return buffer.toString().trim();
     }
 
-    public static void deleteWords(String path){
+    public static void deleteWords(String path) {
         List<String> text = new ArrayList<>();
-        for (String line: readFile(path)) {
-            text.add(deleteWordsInLine(line)) ;   }
+        for (String line : readFile(path)) {
+            text.add(deleteWordsInLine(line));
+        }
         writeFile(path, text);
 
     }
 
-    public static void writeFile(String path, List<String> text){
-        try(FileWriter writer = new FileWriter(path);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
-            for (String line: text){
+    public static void writeFile(String path, List<String> text) {
+        try (FileWriter writer = new FileWriter(path);
+             BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
+            for (String line : text) {
                 bufferedWriter.write(line);
                 bufferedWriter.newLine();
             }
